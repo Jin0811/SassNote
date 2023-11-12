@@ -1,0 +1,17 @@
+.button%base {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.button-primary {
+  @extend %base;
+  color: #fff;
+  background-color: royalblue;
+}
+
+.button-danger {
+  @extend %base;
+  color: #fff;
+  background-color: red;
+}

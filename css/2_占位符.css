@@ -1,0 +1,15 @@
+.button.button-danger, .button.button-primary {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.button-primary {
+  color: #fff;
+  background-color: royalblue;
+}
+
+.button-danger {
+  color: #fff;
+  background-color: red;
+}
