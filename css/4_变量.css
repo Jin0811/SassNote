@@ -1,0 +1,59 @@
+@charset "UTF-8";
+:root {
+  --base-color: #111;
+}
+
+body {
+  --base-background: #f2f2f2;
+}
+
+.header {
+  --color: red;
+}
+
+p {
+  color: var(--base-color);
+  background-color: var(--base-background);
+}
+
+/*
+  scss变量用法
+
+  命名规则：
+  - 必须以$开头，后面跟变量名称
+  - 变量名称不能以数字开头，可以包含数字、下划线、横线
+  - 写法同css的变量，变量名称和变量值使用:分隔
+  - 变量必须要先定义再使用
+  - 通过下划线和横线定义的同名变量为同一变量，下面的会覆盖上面的，建议统一使用一种命名风格
+*/
+.test {
+  color: red;
+}
+
+/*
+  变量的作用域：
+  - 全局变量，定义在最外层的，或者变量后面有 !global 修饰符的变量
+  - 定义在选择器内部的变量
+*/
+/*
+  变量的类型
+  - 数字 1/2/3/10px
+  - 字符串，有引号和无引号的字符串 "test1"/'test2'/test3
+  - 颜色 blue/#ccc/rgba(0,0,0,0.5)
+  - 布尔 true/false
+  - 空值 null
+  - 数组(list) 用空格或逗号作为分隔符 (1, 2, 3, "test", "test2")
+  - maps 相当于js当中的object (key1: value1, key2: value2)
+*/
+.section {
+  width: 100px;
+  height: 100px;
+  font-size: 10px;
+  content: "test";
+  border: 5px solid #ccc;
+  background-color: red;
+}
+
+.footer {
+  color: #333;
+}

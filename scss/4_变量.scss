@@ -1,0 +1,87 @@
+// css当中的变量，:root和body当中的变量，可在全局使用
+:root {
+  --base-color: #111;
+}
+body {
+  --base-background: #f2f2f2;
+}
+.header {
+  --color: red;
+}
+p {
+  color: var(--base-color);
+  background-color: var(--base-background);
+}
+
+/*
+  scss变量用法
+
+  命名规则：
+  - 必须以$开头，后面跟变量名称
+  - 变量名称不能以数字开头，可以包含数字、下划线、横线
+  - 写法同css的变量，变量名称和变量值使用:分隔
+  - 变量必须要先定义再使用
+  - 通过下划线和横线定义的同名变量为同一变量，下面的会覆盖上面的，建议统一使用一种命名风格
+*/
+$redColor: red;
+$green-color: green;
+$blue_color: blue;
+.test {
+  color: $redColor;
+}
+
+/*
+  变量的作用域：
+  - 全局变量，定义在最外层的，或者变量后面有 !global 修饰符的变量
+  - 定义在选择器内部的变量
+*/
+$globalFontSize: 20px; // 全局变量，定义在了最外层
+.container {
+  $color: red !global; // 全局变量，使用了 !global
+  $size: 10px; // 局部变量，定义在了选择器的内部
+}
+
+/*
+  变量的类型
+  - 数字 1/2/3/10px
+  - 字符串，有引号和无引号的字符串 "test1"/'test2'/test3
+  - 颜色 blue/#ccc/rgba(0,0,0,0.5)
+  - 布尔 true/false
+  - 空值 null
+  - 数组(list) 用空格或逗号作为分隔符 (1, 2, 3, "test", "test2")
+  - maps 相当于js当中的object (key1: value1, key2: value2)
+*/
+$num1: 100;
+$num2: 10px;
+$str1: test;
+$str2: "test";
+$bool: true;
+$nullValue: null;
+$list: (1, 2, 3, 4, 5);
+$map: (
+  color1: red,
+  color2: green,
+);
+
+.section {
+  width: #{$num1}px;
+  height: #{$num1}px;
+  font-size: $num2;
+  content: $str2;
+  border: length($list) + px solid #ccc;
+  @if $bool {
+    background-color: map-get($map, "color1");
+  } @else {
+    background-color: map-get($map, "color2");
+  }
+}
+
+// 变量的默认值
+// 当我们接手别人的项目，不清楚某个变量是否定义时，可以使用!default来进行兜底操作
+// 如果$test定义了，值为#333
+// 如果$test未定义，值为#666
+$test: #333;
+$test: #666 !default;
+.footer {
+  color: $test;
+}

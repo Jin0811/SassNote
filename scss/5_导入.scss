@@ -1,0 +1,24 @@
+// css中的导入
+@import url("../css/1_嵌套语法.css");
+
+/*
+  scss中的导入
+  scss拓展了css中@import的功能，允许导入scss文件和sass文件，被导入的文件将合并编译到一个css文件中，
+  另外被导入的文件中所包含的变量或混入指令都可以在导入的文件中使用
+
+  以下几种方式都将作为普通的css语句，不会导入任何的scss文件
+  - 文件拓展名为css
+  - 文件名是一个网络链接
+  - 文件名是url()
+  - @import 包含media query
+*/
+
+// 这里导入publi公共scss文件，会发现css目录中也编译出了一个public.css文件，并且内容是空的
+// 我们只是想导入public.scss，并不想编译这个文件，可以将public.scss重命名为_public.scss
+// 即以下划线开头的scss文件，将不会被监听和编译
+// 注意：_public.scss和public.scss将会被认为是一个文件
+@import "./public.scss";
+
+.header {
+  color: $baseColor;
+}
