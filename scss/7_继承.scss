@@ -1,0 +1,49 @@
+/*
+  使用@extend可以实现css样式的继承
+  @extend可以继承一个css样式，也可以继承一个占位符
+  下面的编写方式.alert样式也会被保留，但是实际上我们并不需要.alert类
+  我们可以通过继承占位符样式来去除多余的样式类
+*/
+.alert {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid;
+  font-size: 14px;
+}
+.alert-success {
+  @extend .alert;
+  background-color: #e1f3d8;
+  border-color: #67c23a;
+}
+.alert-danger {
+  @extend .alert;
+  background-color: #fde2e2;
+  border-color: #f56c6c;
+}
+
+// 继承占位符样式来去除多余的样式类
+%common {
+  font-size: 14px;
+}
+.test1 {
+  @extend %common;
+  color: red;
+}
+.test2 {
+  @extend %common;
+  color: green;
+}
+
+// 还可以使用混合来复用公共代码，混合比较灵活，可以传递参数，但是混合编译之后的代码体积会比继承大
+@mixin flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container1 {
+  @include flex;
+}
+.container2 {
+  @include flex;
+}

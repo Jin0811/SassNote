@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/*
+  使用@extend可以实现css样式的继承
+  @extend可以继承一个css样式，也可以继承一个占位符
+  下面的编写方式.alert样式也会被保留，但是实际上我们并不需要.alert类
+  我们可以通过继承占位符样式来去除多余的样式类
+*/
+.alert, .alert-danger, .alert-success {
+  width: 100%;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid;
+  font-size: 14px;
+}
+
+.alert-success {
+  background-color: #e1f3d8;
+  border-color: #67c23a;
+}
+
+.alert-danger {
+  background-color: #fde2e2;
+  border-color: #f56c6c;
+}
+
+.test2, .test1 {
+  font-size: 14px;
+}
+
+.test1 {
+  color: red;
+}
+
+.test2 {
+  color: green;
+}
+
+.container1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}

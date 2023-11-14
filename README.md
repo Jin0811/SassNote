@@ -207,7 +207,7 @@ $test: #666 !default;
 }
 ```
 
-## 5 导入
+## 5 导入 @import
 
 在 css 当中，我们可以通过 @import 语句来导入一个 css 文件，在 scss 当中，同样存在 @import 语句。scss 拓展了 css 中@import 的功能，允许导入 scss 文件和 sass 文件，被导入的文件将合并编译到一个 css 文件中，另外被导入的文件中所包含的变量或混入指令都可以在导入的文件中使用
 
@@ -230,7 +230,7 @@ $test: #666 !default;
 }
 ```
 
-## 5 混合 Mixin
+## 6 混合 @mixin
 
 混合指令提供了一种封装重复样式的方式，可以大大减少代码量。混合指令内可以编写所有的 css 代码和大部分的 scss 代码，还可以通过参数来引入变量，输出多样化的样式
 
@@ -307,5 +307,61 @@ $test: #666 !default;
   #logo {
     background-image: url("https://img1.baidu.com/it/u=3659556470,999557894&fm=253");
   }
+}
+```
+
+## 7 继承 @extend
+
+scss 当中复用公共样式时，可以使用继承和混合两种方式
+
+```scss
+/*
+  使用@extend可以实现css样式的继承
+  @extend可以继承一个css样式，也可以继承一个占位符
+  下面的编写方式.alert类也会被保留，但是实际上我们并不需要.alert类
+  我们可以通过继承占位符样式来去除多余的样式类
+*/
+.alert {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid;
+  font-size: 14px;
+}
+.alert-success {
+  @extend .alert;
+  background-color: #e1f3d8;
+  border-color: #67c23a;
+}
+.alert-danger {
+  @extend .alert;
+  background-color: #fde2e2;
+  border-color: #f56c6c;
+}
+
+// 继承占位符样式来去除多余的样式类
+%common {
+  font-size: 14px;
+}
+.test1 {
+  @extend %common;
+  color: red;
+}
+.test2 {
+  @extend %common;
+  color: green;
+}
+
+// 使用混合来复用公共代码，混合比较灵活，可以传递参数，但是混合编译之后的代码体积会比继承大
+@mixin flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container1 {
+  @include flex;
+}
+.container2 {
+  @include flex;
 }
 ```
