@@ -50,7 +50,7 @@ p {
   height: 100px;
   font-size: 10px;
   content: "test";
-  border: 5px solid #ccc;
+  border: 3px solid green;
   background-color: red;
 }
 
