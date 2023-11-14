@@ -229,3 +229,83 @@ $test: #666 !default;
   color: $baseColor;
 }
 ```
+
+## 5 混合 Mixin
+
+混合指令提供了一种封装重复样式的方式，可以大大减少代码量。混合指令内可以编写所有的 css 代码和大部分的 scss 代码，还可以通过参数来引入变量，输出多样化的样式
+
+混合指令的定义和使用
+
+```scss
+@mixin block {
+  width: 90%;
+  padding: 24px;
+  margin: 0px 5% 24px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.section {
+  @include block;
+}
+```
+
+<hr />
+
+混合指令-参数和默认参数
+
+```scss
+// 混合指令-带有参数
+@mixin common-padding-one($top, $right, $bottom, $left) {
+  padding: $top, $right, $bottom, $left;
+}
+.test-common-padding-one-1 {
+  @include common-padding-one(0, 10px, 0, 10px); // 没有默认参数，使用时需要传递全部参数
+}
+.test-common-padding-one-2 {
+  @include common-padding-one($top: 0, $right: 10px, $bottom: 0, $left: 10px);
+}
+
+// 混合指令-带有默认参数
+@mixin common-padding-two($top: 0, $right: 0, $bottom: 0, $left: 0) {
+  padding: $top, $right, $bottom, $left;
+}
+.test-common-padding-two-1 {
+  @include common-padding-two(
+    $right: 10px,
+    $left: 10px
+  ); // 关键词参数，可以直接指明传递给哪一个参数，其他的参数则使用默认值
+}
+.test-common-padding-two-2 {
+  @include common-padding-two($top: 10px, $bottom: 10px);
+}
+```
+
+<hr />
+
+混合指令-剩余参数，类似于 js 当中的剩余参数，可以接收多个参数
+
+```scss
+@mixin linear-gradient($direction, $gradient...) {
+  background: linear-gradient($direction, $gradient);
+}
+.container {
+  @include linear-gradient(to right, red, green, blue, brown);
+}
+```
+
+<hr />
+
+混合指令导入内容-可以在 @include 调用混合指令时，传递代码到混合指令内，再输出
+
+```scss
+@mixin apply-to-ie6-only {
+  * html {
+    @content;
+  }
+}
+@include apply-to-ie6-only {
+  #logo {
+    background-image: url("https://img1.baidu.com/it/u=3659556470,999557894&fm=253");
+  }
+}
+```
