@@ -118,3 +118,114 @@ scss 额外提供了一种特殊类型的选择器：占位符选择器，与常
   height: 100%;
 }
 ```
+
+## 4 变量
+
+命名规则
+
+- 必须以$开头，后面跟变量名称
+- 变量名称不能以数字开头，可以包含数字、下划线、横线
+- 写法同 css 的变量，变量名称和变量值使用:分隔
+- 变量必须要先定义再使用
+- 通过下划线和横线定义的同名变量为同一变量，下面的会覆盖上面的，建议统一使用一种命名风格
+
+```scss
+$redColor: red;
+$green-color: green;
+$blue_color: blue;
+.test {
+  color: $redColor;
+}
+```
+
+<hr />
+
+变量的作用域
+
+- 全局变量，定义在最外层的，或者变量后面有 !global 修饰符的变量
+- 定义在选择器内部的变量
+
+```scss
+$globalFontSize: 20px; // 全局变量，定义在了最外层
+.container {
+  $color: red !global; // 全局变量，使用了 !global
+  $size: 10px; // 局部变量，定义在了选择器的内部
+}
+```
+
+<hr />
+
+变量的类型
+
+- 数字 1/2/3/10px
+- 字符串，有引号和无引号的字符串 "test1"/'test2'/test3
+- 颜色 blue/#ccc/rgba(0,0,0,0.5)
+- 布尔 true/false
+- 空值 null
+- 数组(list) 用空格或逗号作为分隔符 (1, 2, 3, "test", "test2")
+- maps 相当于 js 当中的 object (key1: value1, key2: value2)
+
+```scss
+$num1: 100;
+$num2: 10px;
+$str1: test;
+$str2: "test";
+$bool: true;
+$nullValue: null;
+$list: (1, 2, 3, 4, 5);
+$map: (
+  color1: red,
+  color2: green,
+);
+
+.section {
+  width: #{$num1}px;
+  height: #{$num1}px;
+  font-size: $num2;
+  content: $str2;
+  border: length($list) + px solid #ccc;
+  @if $bool {
+    background-color: map-get($map, "color1");
+  } @else {
+    background-color: map-get($map, "color2");
+  }
+}
+```
+
+<hr />
+
+变量的默认值
+当我们接手别人的项目，不清楚某个变量是否定义时，可以使用 !default 来进行兜底操作
+
+```scss
+// 如果$test定义了，值为#333
+// 如果$test未定义，值为#666
+$test: #333;
+$test: #666 !default;
+.footer {
+  color: $test;
+}
+```
+
+## 5 导入
+
+在 css 当中，我们可以通过 @import 语句来导入一个 css 文件，在 scss 当中，同样存在 @import 语句。scss 拓展了 css 中@import 的功能，允许导入 scss 文件和 sass 文件，被导入的文件将合并编译到一个 css 文件中，另外被导入的文件中所包含的变量或混入指令都可以在导入的文件中使用
+
+以下几种方式都将作为普通的 css 语句，不会导入任何的 scss 文件
+
+- 文件拓展名为 css
+- 文件名是一个网络链接
+- 文件名是 url()
+- @import 包含 media query
+
+```scss
+// 这里导入publi公共scss文件，会发现css目录中也编译出了一个public.css文件，并且内容是空的
+// 我们只是想导入public.scss，并不想编译这个文件，可以将public.scss重命名为_public.scss
+// 即以下划线开头的scss文件，将不会被监听和编译
+// 注意：_public.scss和public.scss将会被认为是一个文件
+@import "./public.scss";
+
+.header {
+  color: $baseColor;
+}
+```
