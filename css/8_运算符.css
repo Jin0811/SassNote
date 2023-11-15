@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/*
+	等号操作符，支持所有的数据类型
+	== 等于
+	!= 不等于
+*/
+.test1 {
+  color: red;
+}
+
+.test2 {
+  color: green;
+}
+
+/*
+	关系运行符，只能操作整数
+	< 小于
+  \> 大于
+  <= 小于等于
+  \>= 大于等于
+*/
+.test3 {
+  font-size: 16px;
+}
+
+/*
+	逻辑运算符
+  and 与
+  or 或
+  not 非
+*/
+.test4 {
+  color: red;
+  background-color: green;
+  border-color: red;
+}

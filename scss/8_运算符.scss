@@ -1,0 +1,66 @@
+/*
+	等号操作符，支持所有的数据类型
+	== 等于
+	!= 不等于
+*/
+$var1: 1;
+.test1 {
+  @if $var1 == 1 {
+    color: red;
+  } @else {
+    color: green;
+  }
+}
+$var2: "绿色";
+.test2 {
+  @if $var2 != "绿色" {
+    color: red;
+  } @else {
+    color: green;
+  }
+}
+
+/*
+	关系运行符，只能操作整数
+	< 小于
+  \> 大于
+  <= 小于等于
+  \>= 大于等于
+*/
+$var3: 80;
+.test3 {
+  @if $var3 < 50 {
+    font-size: 14px;
+  } @else if $var3 >= 50 and $var3 < 100 {
+    font-size: 16px;
+  } @else if $var3 >= 100 {
+    font-size: 18px;
+  }
+}
+
+/*
+	逻辑运算符
+  and 与
+  or 或
+  not 非
+*/
+$var4: 10;
+.test4 {
+  @if $var4 > 5 and $var4 < 20 {
+    color: red;
+  } @else {
+    color: green;
+  }
+
+  @if $var4 < 5 or $var4 > 20 {
+    background-color: red;
+  } @else {
+    background-color: green;
+  }
+
+  @if not($var4 < 5) {
+    border-color: red;
+  } @else {
+    border-color: green;
+  }
+}
