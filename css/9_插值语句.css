@@ -1,0 +1,10 @@
+@charset "UTF-8";
+/*
+  插值语句，使用范围：选择器、属性名、属性值、注释等
+*/
+/* 
+  @author: 张三
+*/
+button.success {
+  background-color: green;
+}

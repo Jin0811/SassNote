@@ -409,3 +409,21 @@ $list: 100, 1000, 10000;
 ```
 
 如果需要使用变量，又不想让 / 进行除法运算，而且是将 / 编译到 css 文件当中，只需要用#{}插值语句包裹变量即可
+
+## 9 插值语句
+
+插值语句，使用范围：选择器、属性名、属性值、注释等
+
+```scss
+$author: "张三";
+$className: "success";
+$color: green;
+$attr: "background";
+
+/* 
+  @author: #{$author}
+*/
+button.#{$className} {
+  #{$attr}-color: #{$color};
+}
+```
