@@ -4,14 +4,17 @@
 	!= 不等于
 */
 $var1: 1;
+
 .test1 {
-  @if $var1 == 1 {
+  @if $var1 ==1 {
     color: red;
   } @else {
     color: green;
   }
 }
+
 $var2: "绿色";
+
 .test2 {
   @if $var2 != "绿色" {
     color: red;
@@ -28,12 +31,13 @@ $var2: "绿色";
   \>= 大于等于
 */
 $var3: 80;
+
 .test3 {
   @if $var3 < 50 {
     font-size: 14px;
-  } @else if $var3 >= 50 and $var3 < 100 {
+  } @else if $var3 >=50 and $var3 < 100 {
     font-size: 16px;
-  } @else if $var3 >= 100 {
+  } @else if $var3 >=100 {
     font-size: 18px;
   }
 }
@@ -45,14 +49,15 @@ $var3: 80;
   not 非
 */
 $var4: 10;
+
 .test4 {
-  @if $var4 > 5 and $var4 < 20 {
+  @if $var4 >5 and $var4 < 20 {
     color: red;
   } @else {
     color: green;
   }
 
-  @if $var4 < 5 or $var4 > 20 {
+  @if $var4 < 5 or $var4 >20 {
     background-color: red;
   } @else {
     background-color: green;
@@ -63,4 +68,60 @@ $var4: 10;
   } @else {
     border-color: green;
   }
+}
+
+/*
+  数字操作符
+  + 加
+  - 减
+  * 乘
+  / 除
+  % 取模
+*/
+.test5 {
+  /* + 加法运算 */
+  width: 50 + 20; // 70
+  width: 50 + 20%; // 70%
+  width: 50% + 20%; // 70%
+  width: 20 + 10px; // 30px
+  width: 20px + 10px; // 30px
+  width: 20px + 10pt; // 33.3333333333px
+  // width: 20% + 10px; // 编译报错，因为存在两个单位，且不相同
+
+  /* - 减法运算 */
+  width: 50 - 20; // 30
+  width: 50 - 20%; // 30%
+  width: 50% - 20%; // 30%
+  width: 20px - 10px; // 10px
+  width: 20px - 10pt; // 6.6666666667px
+  // width: 50px - 20%; // 编译报错，因为存在两个单位，且不相同
+
+  /* * 乘法运算 */
+  width: 50 * 20; // 1000
+  width: 10 * 10%; // 100%
+  width: 10px * 10; // 100px
+  // width: 50% * 10%; // 编译报错，出现了两个百分号
+  // width: 10px * 20px; // 编译报错，出现了两个px单位
+
+  /* / 除法运算 */
+  $widthNum: 20px;
+  $list: 10px, 20px, 30px;
+  width: 10/5; // 会原样输出10/5，因为css当中/是分隔符
+  width: 10px/5px; // 会原样输出10px/5px，因为css当中/是分隔符
+  width: calc(10 / 5); // 2
+  width: calc(10px / 5px); // 2
+  width: calc(10px / 5); // 2px
+  width: calc($widthNum / 5); // 4px
+  width: calc(nth($list, 1) / 2px); // 5
+  width: calc(10px / 2px) + 3px; // 8px
+  width: calc(10px / 2) + 3px; // 8px
+
+  /* % 取模运算 */
+  width: 10 % 3; // 1
+  width: 10px % 3; // 1px
+  width: 10px % 3px; // 1px
+  width: 50% % 3; // 2%
+  width: 50 % 3%; // 2%
+  // width: 50% % 10px; // 编译报错，因为存在两个单位，且不相同
+  width: 50px % 10pt; // 10px
 }

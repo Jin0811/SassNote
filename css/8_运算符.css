@@ -34,3 +34,48 @@
   background-color: green;
   border-color: red;
 }
+
+/*
+  数字操作符
+  + 加
+  - 减
+  * 乘
+  / 除
+  % 取模
+*/
+.test5 {
+  /* + 加法运算 */
+  width: 70;
+  width: 70%;
+  width: 70%;
+  width: 30px;
+  width: 30px;
+  width: 33.3333333333px;
+  /* - 减法运算 */
+  width: 30;
+  width: 30%;
+  width: 30%;
+  width: 10px;
+  width: 6.6666666667px;
+  /* * 乘法运算 */
+  width: 1000;
+  width: 100%;
+  width: 100px;
+  /* / 除法运算 */
+  width: 10/5;
+  width: 10px/5px;
+  width: 2;
+  width: 2;
+  width: 2px;
+  width: 4px;
+  width: 5;
+  width: 8px;
+  width: 8px;
+  /* % 取模运算 */
+  width: 1;
+  width: 1px;
+  width: 1px;
+  width: 2%;
+  width: 2%;
+  width: 10px;
+}
