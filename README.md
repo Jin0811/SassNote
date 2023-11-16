@@ -427,3 +427,58 @@ button.#{$className} {
   #{$attr}-color: #{$color};
 }
 ```
+
+## 10 scss 常见函数
+
+[查阅 scss 函数文档](https://sass-lang.com/documentation/modules/)
+
+color 颜色函数
+
+- lighten 调亮颜色
+
+  ```scss
+  /*
+    lighten($color, $amount) 调亮颜色
+    $color 颜色
+    $amount 0%-100%
+  */
+  $baseColor: royalblue;
+  background-color: lighten($color: $baseColor, $amount: 30%);
+  ```
+
+- darken 调暗颜色
+
+  ```scss
+  /*
+    darken($color, $amount) 调暗颜色
+    $color 颜色
+    $amount 0%-100%
+  */
+  $baseColor: royalblue;
+  background-color: darken($color: $baseColor, $amount: 30%);
+  ```
+
+- opacity 返回一个颜色的透明度
+
+  ```scss
+  /*
+    opacity($color) 返回一个颜色的透明度
+    $color 颜色
+  */
+  $baseColor: royalblue;
+  background-color: opacity($baseColor); // 1
+  ```
+
+- opacify 修改一个颜色的透明度
+
+  ```scss
+  /*
+    opacify($color, $amount) 修改一个颜色的透明度
+    $color 颜色
+    $amount 0-1
+    注意：颜色本身的透明度 + $amount > 1 时，就是纯色的$color
+  */
+  $baseColor: royalblue;
+  background-color: opacify(rgba(0, 0, 0, 0.2), $amount: 0.4); // rgba(0, 0, 0, 0.6)
+  background-color: opacify(rgba(0, 0, 0, 0.2), $amount: 1); // black
+  ```

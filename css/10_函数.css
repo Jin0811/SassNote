@@ -1,0 +1,135 @@
+@charset "UTF-8";
+/*
+  color 颜色相关函数
+*/
+.test1 {
+  /* 原始颜色 */
+  background-color: royalblue;
+  /*
+    lighten($color, $amount) 调亮颜色
+    $color 颜色
+    $amount 0%-100%
+  */
+  background-color: #c5d1f6;
+  /*
+    darken($color, $amount) 调暗颜色
+    $color 颜色
+    $amount 0%-100%
+  */
+  background-color: #132c76;
+  /*
+    opacity($color) 返回一个颜色的透明度
+    $color 颜色
+  */
+  background-color: 1;
+  /*
+    opacify($color, $amount) 修改一个颜色的透明度
+    $color 颜色
+    $amount 0-1
+    注意：颜色本身的透明度 + $amount > 1 时，就是纯色的$color
+  */
+  background-color: rgba(0, 0, 0, 0.6);
+  background-color: black;
+}
+
+/*
+  string 字符串函数
+*/
+.test2 {
+  /*
+    quote($string) 给内容添加引号
+    unquote($string) 去除内容的引号
+    str-length($string) 计算内容的长度
+    nsert($string, $insert, $index) 在字符串的指定位置插入内容
+  */
+  content: "这里是内容";
+  background-color: #fff;
+  content: 6;
+  content: "scss学习笔记";
+}
+
+/*
+  math 数值函数
+  percentage($number) 将无单位的数值转换为百分比
+  round($number) 对数字进行四舍五入
+  floor($number) 向下取整
+  ceil($number) 向上取整
+  abs($number) 绝对值
+  min() 获取几个数字中的最小值
+  max() 获取几个数字中的最大值
+  random($limit) 如果不传递$limit，则随机返回一个0-1之间的数字，如果传递$limit，则随机返回一个0-$limit之间的数字 
+*/
+.test3 {
+  width: 50%;
+  width: 10;
+  width: 9;
+  width: 10;
+  width: 2;
+  width: 1;
+  width: 5;
+  width: 0.2259982742;
+  width: 6;
+}
+
+/*
+  list 数组函数
+  length($list) 返回数组的长度
+  nth($list, $n) 返回指定的数组元素
+  index($list, $value) 返回指定元素在列表中的位置，位置从1开始
+  join($list1, $list2, $separator) 将两个列表连接到一起
+  append($list, $val, $separator) 在列表的末尾添加一个值
+*/
+.test4 {
+  width: 5;
+  width: 2;
+  width: 3;
+  /*
+    append($list, $val, $separator) 在列表的末尾添加一个值
+    $list 列表
+    $val 值
+    $separator 分割符，可选 space | comma | slash | auto
+  */
+  width: 6, 7, 8, 9, 10, 11;
+  /*
+    join($list1, $list2, $separator) 将两个列表连接到一起
+    $list1 列表1
+    $list2 列表2
+    $separator 分割符，可选 space | comma | slash | auto
+  */
+  width: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+}
+
+/*
+  map 函数
+  map-get($map, $key) 根据键值获取map中对应的值
+  map-merge($map1, $map2) 将两个map合并成一个新的map
+  map-has-key($map, $key) 判断map当中是否存在指定的key
+  map-keys($map) 映射map中的全部键
+  map-values($map) 映射map中的全部值
+*/
+.test5 {
+  font-size: 16px;
+  content: "normal";
+  content: "small", "medium", "large", "normal";
+  content: 12px, 18px, 24px, 16px;
+}
+
+/*
+  selector 选择器函数
+  selector-append($selectors: …) 将第二个（也可以有多个）添加到第一个选择器的后面
+  selector-unify(selector1, selector2) 将两组选择器合成一个复合选择器，如两个选择器无法合成，则返回 null 值
+*/
+.test6 .a.b.c {
+  color: red;
+}
+.test6 a.disabled {
+  background-color: #ccc;
+}
+
+/*
+  自检函数
+*/
+.test7 {
+  content: "可以使用$color变量";
+  content: "可以使用paddingMixin混合";
+}
