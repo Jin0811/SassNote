@@ -1,0 +1,25 @@
+.triangle4, .triangle3, .triangle2, .triangle1 {
+  width: 0px;
+  height: 0px;
+  display: inline-block;
+}
+
+.triangle1 {
+  border: 20px solid royalblue;
+  border-color: transparent transparent royalblue transparent;
+}
+
+.triangle2 {
+  border: 20px solid royalblue;
+  border-color: transparent transparent transparent royalblue;
+}
+
+.triangle3 {
+  border: 20px solid royalblue;
+  border-color: royalblue transparent transparent transparent;
+}
+
+.triangle4 {
+  border: 20px solid royalblue;
+  border-color: transparent royalblue transparent transparent;
+}

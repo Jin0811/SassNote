@@ -1,0 +1,34 @@
+%triangle {
+  width: 0px;
+  height: 0px;
+  display: inline-block;
+}
+
+@mixin triangle($direction: top, $color: #000, $size: 30) {
+  border: #{$size}px solid $color;
+  @if $direction == top {
+    border-color: transparent transparent $color transparent;
+  } @else if $direction == right {
+    border-color: transparent transparent transparent $color;
+  } @else if $direction == bottom {
+    border-color: $color transparent transparent transparent;
+  } @else if $direction == left {
+    border-color: transparent $color transparent transparent;
+  }
+}
+.triangle1 {
+  @extend %triangle;
+  @include triangle(top, royalblue, 20);
+}
+.triangle2 {
+  @extend %triangle;
+  @include triangle(right, royalblue, 20);
+}
+.triangle3 {
+  @extend %triangle;
+  @include triangle(bottom, royalblue, 20);
+}
+.triangle4 {
+  @extend %triangle;
+  @include triangle(left, royalblue, 20);
+}

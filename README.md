@@ -484,3 +484,22 @@ selector 选择器函数
 
 - `variable-exists($name)` 判断某个变量是否存在
 - `mixin-exists($name)` 判断某个混合是否存在
+
+## 10 @if 语句
+
+@if 语句可以用来控制代码的执行
+
+```scss
+$type: monster;
+p {
+  @if $type == ocean {
+    color: blue;
+  } @else if $type == matador {
+    color: red;
+  } @else if $type == monster {
+    color: green;
+  } @else {
+    color: black;
+  }
+}
+```
