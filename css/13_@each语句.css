@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/*
+	@each语句用于遍历list或者map
+	语法：
+	- 遍历单个list
+		@each <var> in <list>
+	- 遍历多个list
+		@each <var1>, <var2> in <list1>, <list2>
+	- 遍历map
+		@each <key>, <value> in (key1: value1, key2: value1)
+*/
+.dog-icon-1 {
+  background-image: url("./icon/dog.png");
+}
+
+.pig-icon-1 {
+  background-image: url("./icon/pig.png");
+}
+
+.dog-icon-2 {
+  background-image: url("./icon/dog.png");
+  color: red;
+}
+
+.pig-icon-2 {
+  background-image: url("./icon/pig.png");
+  color: green;
+}
+
+.h1 {
+  font-size: 20px;
+}
+
+.h2 {
+  font-size: 18px;
+}
+
+.h3 {
+  font-size: 16px;
+}

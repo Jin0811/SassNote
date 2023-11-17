@@ -528,3 +528,48 @@ p {
   }
 }
 ```
+
+## 13 @each 语句
+
+@each 语句用于遍历 list 或者 map
+
+- 遍历单个 list
+  ```scss
+  @each <var> in <list> ;
+  ```
+- 遍历多个 list
+
+  ```scss
+  @each <var1>, <var2> in <list1>, <list2> ;
+  ```
+
+- 遍历 map
+  ```scss
+  @each <key>, <value> in (key1: value1, key2: value1) ;
+  ```
+
+```scss
+// 遍历单个list
+@each $name in (dog, pig) {
+  .#{$name}-icon-1 {
+    background-image: url("./icon/#{$name}.png");
+  }
+}
+
+// 遍历多个list
+$list1: (dog, red);
+$list2: (pig, green);
+@each $name, $color in $list1, $list2 {
+  .#{$name}-icon-2 {
+    background-image: url("./icon/#{$name}.png");
+    color: $color;
+  }
+}
+
+// 遍历map
+@each $header, $size in (h1: 20px, h2: 18px, h3: 16px) {
+  .#{$header} {
+    font-size: $size;
+  }
+}
+```
