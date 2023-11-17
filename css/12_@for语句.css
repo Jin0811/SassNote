@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/*
+	@for语句类似于js当中的for循环，可以在限制的范围内进行循环
+	@for语句有两种语法格式
+	- @for $var from <start> through <end> 包含开头和结尾
+	- @for $var from <start> to <end> 包含开头，不包含结尾
+*/
+.item-1 {
+  width: 10px;
+}
+
+.item-2 {
+  width: 20px;
+}
+
+.item-3 {
+  width: 30px;
+}
+
+.item-4 {
+  width: 40px;
+}
+
+.item-5 {
+  width: 50px;
+}
+
+.section-1 {
+  width: 10px;
+}
+
+.section-2 {
+  width: 20px;
+}
+
+.section-3 {
+  width: 30px;
+}
+
+.section-4 {
+  width: 40px;
+}

@@ -485,7 +485,7 @@ selector 选择器函数
 - `variable-exists($name)` 判断某个变量是否存在
 - `mixin-exists($name)` 判断某个混合是否存在
 
-## 10 @if 语句
+## 11 @if 语句
 
 @if 语句可以用来控制代码的执行
 
@@ -500,6 +500,31 @@ p {
     color: green;
   } @else {
     color: black;
+  }
+}
+```
+
+## 12 @for 语句
+
+@for 语句类似于 js 当中的 for 循环，可以在限制的范围内进行循环，@for 语句有两种语法格式，分别为 through 和 to
+
+- `@for $var from <start> through <end>` 包含开头和结尾
+- `@for $var from <start> to <end>` 包含开头，不包含结尾
+
+```scss
+// 1 2 3 4 5
+// .item-1 ~ .item-5
+@for $i from 1 through 5 {
+  .item-#{$i} {
+    width: 10px * $i;
+  }
+}
+
+// 1 2 3 4
+// .section-1 ~ .section-4
+@for $i from 1 to 5 {
+  .section-#{$i} {
+    width: 10px * $i;
   }
 }
 ```
