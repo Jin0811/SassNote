@@ -432,53 +432,55 @@ button.#{$className} {
 
 [查阅 scss 函数文档](https://sass-lang.com/documentation/modules/)
 
+代码示例参考 `scss/10_函数.scss` 文件
+
 color 颜色函数
 
-- lighten 调亮颜色
+- `lighten($color, $amount)` 调亮颜色
+- `darken($color, $amount)` 调暗颜色
+- `opacity($color)` 返回一个颜色的透明度
+- `opacify($color, $amount)` 修改一个颜色的透明度
 
-  ```scss
-  /*
-    lighten($color, $amount) 调亮颜色
-    $color 颜色
-    $amount 0%-100%
-  */
-  $baseColor: royalblue;
-  background-color: lighten($color: $baseColor, $amount: 30%);
-  ```
+string 字符串函数
 
-- darken 调暗颜色
+- `quote($string)` 给内容添加引号
+- `unquote($string)` 去除内容的引号
+- `str-length($string)` 计算内容的长度
+- `insert($string, $insert, $index)` 在字符串的指定位置插入内容
 
-  ```scss
-  /*
-    darken($color, $amount) 调暗颜色
-    $color 颜色
-    $amount 0%-100%
-  */
-  $baseColor: royalblue;
-  background-color: darken($color: $baseColor, $amount: 30%);
-  ```
+math 数值函数
 
-- opacity 返回一个颜色的透明度
+- `percentage($number)` 将无单位的数值转换为百分比
+- `round($number)` 对数字进行四舍五入
+- `floor($number)` 向下取整
+- `ceil($number)` 向上取整
+- `abs($number)` 绝对值
+- `min()` 获取几个数字中的最小值
+- `max()` 获取几个数字中的最大值
+- `random($limit)` 如果不传递$limit，则随机返回一个 0-1 之间的数字，如果传递$limit，则随机返回一个 0-$limit 之间的数字
 
-  ```scss
-  /*
-    opacity($color) 返回一个颜色的透明度
-    $color 颜色
-  */
-  $baseColor: royalblue;
-  background-color: opacity($baseColor); // 1
-  ```
+list 数组函数
 
-- opacify 修改一个颜色的透明度
+- `length($list)` 返回数组的长度
+- `nth($list, $n)` 返回指定的数组元素
+- `index($list, $value)` 返回指定元素在列表中的位置，位置从 1 开始
+- `join($list1, $list2, $separator)` 将两个列表连接到一起
+- `append($list, $val, $separator)` 在列表的末尾添加一个值
 
-  ```scss
-  /*
-    opacify($color, $amount) 修改一个颜色的透明度
-    $color 颜色
-    $amount 0-1
-    注意：颜色本身的透明度 + $amount > 1 时，就是纯色的$color
-  */
-  $baseColor: royalblue;
-  background-color: opacify(rgba(0, 0, 0, 0.2), $amount: 0.4); // rgba(0, 0, 0, 0.6)
-  background-color: opacify(rgba(0, 0, 0, 0.2), $amount: 1); // black
-  ```
+map 函数
+
+- `map-get($map, $key)` 根据键值获取 map 中对应的值
+- `map-merge($map1, $map2)` 将两个 map 合并成一个新的 map
+- `map-has-key($map, $key)` 判断 map 当中是否存在指定的 key
+- `map-keys($map)` 映射 map 中的全部键
+- `map-values($map)` 映射 map 中的全部值
+
+selector 选择器函数
+
+- `selector-append($selectors: ...)` 将第二个（也可以有多个）添加到第一个选择器的后面
+- `selector-unify(selector1, selector2)` 将两组选择器合成一个复合选择器，如两个选择器无法合成，则返回 null 值
+
+自检函数
+
+- `variable-exists($name)` 判断某个变量是否存在
+- `mixin-exists($name)` 判断某个混合是否存在

@@ -40,7 +40,7 @@
     quote($string) 给内容添加引号
     unquote($string) 去除内容的引号
     str-length($string) 计算内容的长度
-    nsert($string, $insert, $index) 在字符串的指定位置插入内容
+    insert($string, $insert, $index) 在字符串的指定位置插入内容
   */
   content: "这里是内容";
   background-color: #fff;
@@ -57,7 +57,7 @@
   abs($number) 绝对值
   min() 获取几个数字中的最小值
   max() 获取几个数字中的最大值
-  random($limit) 如果不传递$limit，则随机返回一个0-1之间的数字，如果传递$limit，则随机返回一个0-$limit之间的数字 
+  random($limit) 如果不传递$limit，则随机返回一个0-1之间的数字，如果传递$limit，则随机返回一个0-$limit之间的数字
 */
 .test3 {
   width: 50%;
@@ -67,8 +67,8 @@
   width: 2;
   width: 1;
   width: 5;
-  width: 0.2259982742;
-  width: 6;
+  width: 0.5630934707;
+  width: 5;
 }
 
 /*
@@ -76,8 +76,8 @@
   length($list) 返回数组的长度
   nth($list, $n) 返回指定的数组元素
   index($list, $value) 返回指定元素在列表中的位置，位置从1开始
-  join($list1, $list2, $separator) 将两个列表连接到一起
   append($list, $val, $separator) 在列表的末尾添加一个值
+  join($list1, $list2, $separator) 将两个列表连接到一起
 */
 .test4 {
   width: 5;
@@ -116,7 +116,7 @@
 
 /*
   selector 选择器函数
-  selector-append($selectors: …) 将第二个（也可以有多个）添加到第一个选择器的后面
+  selector-append($selectors: ...) 将第二个（也可以有多个）添加到第一个选择器的后面
   selector-unify(selector1, selector2) 将两组选择器合成一个复合选择器，如两个选择器无法合成，则返回 null 值
 */
 .test6 .a.b.c {
