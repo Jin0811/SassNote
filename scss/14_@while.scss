@@ -1,0 +1,14 @@
+/*
+	@while指令类似于js当中的while语句，用于重复进行某个操作，直到条件为真
+  注意：如果@while是一个死循环，则会造成编辑器卡死，css文件也无法生成
+*/
+
+$num: 12;
+@while $num > 0 {
+  .col-#{$num} {
+    // width: calc($num / 12) * 100 + #{"%"};
+    // width: unquote($string: calc($num / 12) * 100 + "%");
+    width: calc($num / 12) * 100%;
+  }
+  $num: $num - 1;
+}
