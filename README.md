@@ -743,3 +743,48 @@ $font-size-1: 16px !default;
   $font-size-1: 18px
 );
 ```
+
+## 19 @at-root 语句
+
+@at-root 可以使被嵌套的选择器或者属性跳出嵌套
+
+@at-root 默认只会跳出选择器嵌套，而不能跳出 @media 和 @supports，如果要跳出这两种，则需要借助 @at-root(without: media)和 @at-root(without: supports)，默认的@at-root 其实就是 @at-root (without: rule)
+
+@at-root(with)和@at-root(without)的语法规则：
+
+with 表示的是不跳出某个范围，还包含在这个范围内
+
+without 表示的是跳出某个范围，不在这个范围内
+
+- all 表示所有
+- rule 常规 css
+- media
+- supports
+
+```scss
+// 作用某个选择器，使其跳出嵌套
+.parent {
+  font-size: 20px;
+  @at-root .child {
+    font-size: 18px;
+    .son {
+      font-size: 16px;
+    }
+  }
+}
+
+// 批量跳出
+.parent {
+  @at-root {
+    .child1 {
+      font-size: 18px;
+    }
+    .child2 {
+      font-size: 20px;
+    }
+    .child3 {
+      font-size: 22px;
+    }
+  }
+}
+```
