@@ -696,7 +696,7 @@ $_private-font-size-2: 16px; // 私有变量
 $-font-size: 16px;
 $_font-size: 16px;
 
-// 修改模块内的变量默认值
+// 修改模块内变量的默认值
 @use "style/_common.scss" with (
   $font-size: 18px
 );
@@ -706,4 +706,40 @@ $_font-size: 16px;
 // 在_index.scss文件当中引入所需要的文件
 // 最后在调用的地方，引入这个目录即可
 @use "style"; // 引入style目录中的_index.scss文件
+```
+
+## 18 @forward 语句
+
+在 @use 的时候，我们可以创建一个 \_index.scss 文件来引入某个目录内的多个文件，但是这样存在一个问题，模块内的变量、混合、函数等只能在 \_index.scss 当中使用，无法在其他的文件内使用，因为其他的文件并未引入相关的模块成员，这个时候，我们可以借助 @forward 来解决问题
+
+@forward 可以加载一个模块的成员，并且把这些成员对外暴露出去，类似于 es6 当中的 export，通常用于跨多个文件复用 scss
+
+```scss
+// _common.scss 文件内容
+$font-size-1: 16px !default;
+$font-size-2: 18px !default;
+$font-size-3: 20px !default;
+
+// _global.scss 文件内容
+$font-size-1: 16px !default;
+```
+
+```scss
+// 基本使用
+@forward "style/_common.scss";
+
+// 导入部分变量，其他都隐藏
+@forward "style/_common.scss" show $font-size-1, $font-size-2;
+
+// 隐藏部分变量，其他都导入
+@forward "style/_common.scss" hide $font-size-3;
+
+// 假如需要转发两个模块，而这两个模块当中存在命名相同的变量，则可以为其添加不同的前缀
+@forward "style/_common.scss" as c-*; // $c-font-size-1
+@forward "style/_global.scss" as g-*; // $g-font-size-1
+
+// 修改模块内变量的默认值，此功能与 @use 相同
+@forward "style/_common.scss" with (
+  $font-size-1: 18px
+);
 ```
