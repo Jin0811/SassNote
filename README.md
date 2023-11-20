@@ -661,6 +661,8 @@ $list: 1, 2, 3, 4, 5;
 
 ## 17 @use 语句
 
+语法 `@use <url> [as alias | namespace | *]`
+
 推荐使用 @use 来导入模块，以获得更好的模块化支持、性能优化和避免全局污染问题；而 @import 在新版本 scss 中已不再推荐使用，并且未来可能会被废弃
 
 | 差异项     | @import            | @use                       |
@@ -672,3 +674,36 @@ $list: 1, 2, 3, 4, 5;
 | 模块化支持 | 较弱               | 提供了更好的模块化支持     |
 | 性能       | 可能存在性能问题   | 更优化的性能               |
 | 全局污染   | 不提供隔离性       | 提供隔离性                 |
+
+```scss
+// _common.scss 文件内容
+$font-size: 16px !default;
+$-private-font-size-1: 16px; // 私有变量
+$_private-font-size-2: 16px; // 私有变量
+```
+
+```scss
+// 基础使用
+@use "style/_common.scss";
+
+// 命名空间
+@use "style/_common.scss"; // 默认会以文件名作为命名空间，访问时，需要以 [namespace].[变量/混合/函数] 的形式调用
+@use "style/_common.scss" as common; // 指定命名空间为common
+@use "style/_common.scss" as *; // 取消命名空间，一般不推荐
+
+// 指定私有属性，外部无法访问
+// 当变量名称以-或者_开头时，@use引入此文件时，无法访问这个变量，可以定义私有属性
+$-font-size: 16px;
+$_font-size: 16px;
+
+// 修改模块内的变量默认值
+@use "style/_common.scss" with (
+  $font-size: 18px
+);
+
+// _index.scss会默认被scss文件认为是一个目录的入口文件
+// 当我们需要引入某个目录里多个文件时，可以在目录当中新建一个_index.scss文件
+// 在_index.scss文件当中引入所需要的文件
+// 最后在调用的地方，引入这个目录即可
+@use "style"; // 引入style目录中的_index.scss文件
+```
