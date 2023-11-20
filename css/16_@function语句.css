@@ -1,0 +1,30 @@
+@charset "UTF-8";
+/*
+	自定义函数
+	在 scss 当中，可以将通用的，重复的操作封装为一个函数，这个函数可以根据传参来返回不同的样式
+	自定义函数当中可以编写多行代码，但是最后需要使用 @return 语句来返回一个值
+*/
+.test1 {
+  background: -webkit-gradient(linear, left top, right top, from(red), to(green));
+  background: linear-gradient(to right, red, green);
+}
+
+.test2 {
+  background: -webkit-gradient(linear, left top, right top, from(red), to(green));
+  background: linear-gradient(to right, red, green);
+}
+
+.test3 {
+  background: -webkit-gradient(linear, left top, right top, from(red), to(green));
+  background: linear-gradient(to right, red, green);
+}
+
+.test4 {
+  background: -webkit-gradient(linear, left top, right top, from(red), color-stop(green), to(blue));
+  background: linear-gradient(to right, red, green, blue);
+}
+
+.test5 {
+  z-index: 5;
+  z-index: 5;
+}

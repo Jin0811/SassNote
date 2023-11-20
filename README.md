@@ -614,3 +614,47 @@ $theme: dark;
   color: if($theme == dark, #fff, #000);
 }
 ```
+
+## 16 @function 语句
+
+在 scss 当中，可以将通用的，重复的操作封装为一个函数，这个函数可以传参来返回不同的样式；自定义函数当中可以编写多行代码，但是最后需要使用 @return 语句来返回一个值
+
+```scss
+/*
+	自定义函数
+	在 scss 当中，可以将通用的，重复的操作封装为一个函数，这个函数可以根据传参来返回不同的样式
+	自定义函数当中可以编写多行代码，但是最后需要使用 @return 语句来返回一个值
+*/
+
+@function fun1($direction, $color1, $color2: green) {
+  @return linear-gradient($direction, $color1, $color2);
+}
+
+// 传递参数
+.test1 {
+  background: fun1(to right, red, green);
+}
+// 省略默认参数
+.test2 {
+  background: fun1(to right, red);
+}
+// 关键词参数，可以直接指明传递给哪一个参数，其他的参数则使用默认值
+.test3 {
+  background: fun1($direction: to right, $color1: red);
+}
+
+// 剩余参数，类似于js当中的剩余参数，可以接收多个参数
+@function fun2($direction, $gradient...) {
+  @return linear-gradient($direction, $gradient);
+}
+.test4 {
+  background: fun2(to right, red, green, blue);
+}
+
+// 使用函数时，可以将参数展开传递，下面的代码中，将一个list展开传递到了max函数当中
+$list: 1, 2, 3, 4, 5;
+.test5 {
+  z-index: max(1, 2, 3, 4, 5);
+  z-index: max($list...);
+}
+```
