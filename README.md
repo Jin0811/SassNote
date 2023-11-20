@@ -573,3 +573,44 @@ $list2: (pig, green);
   }
 }
 ```
+
+## 14 @while 语句
+
+@while 指令类似于 js 当中的 while 语句，用于重复进行某个操作，直到条件为真
+
+注意：如果 @while 是一个死循环，则会造成编辑器卡死、无法生成 css 文件的问题
+
+```scss
+$num: 12;
+@while $num > 0 {
+  .col-#{$num} {
+    // width: calc($num / 12) * 100 + #{"%"};
+    // width: unquote($string: calc($num / 12) * 100 + "%");
+    width: calc($num / 12) * 100%;
+  }
+  $num: $num - 1;
+}
+```
+
+## 15 if() 三元表达式
+
+在 scss 当中我们可以使用 @if 来进行判断，但是对于一些简单的判断，@if 的代码量就比较多，此时我们可以借助 if() 来实现三元表达式判断
+
+```scss
+// if($condition, $case1, $case2)
+// $condition 一个表达式，返回一个布尔值
+// $case1 $condition == true时返回的值
+// $case2 $condition == false时返回的值
+
+$theme: dark;
+.test1 {
+  @if $theme == dark {
+    color: #fff;
+  } @else {
+    color: #000;
+  }
+}
+.test2 {
+  color: if($theme == dark, #fff, #000);
+}
+```
