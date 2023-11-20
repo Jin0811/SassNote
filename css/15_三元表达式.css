@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/*
+	在scss当中我们可以使用@if来进行判断，但是对于一些简单的判断，@if的代码量就比较多
+	我们可以借助if()来实现三元表达式判断
+
+	if($condition, $case1, $case2)
+	$condition 一个表达式，返回一个布尔值
+	$case1 $condition == true时返回的值
+	$case2 $condition == false时返回的值
+*/
+.test1 {
+  color: #fff;
+}
+
+.test2 {
+  color: #fff;
+}
