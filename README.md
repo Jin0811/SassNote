@@ -748,9 +748,9 @@ $font-size-1: 16px !default;
 
 @at-root 可以使被嵌套的选择器或者属性跳出嵌套
 
-@at-root 默认只会跳出选择器嵌套，而不能跳出 @media 和 @supports，如果要跳出这两种，则需要借助 @at-root(without: media)和 @at-root(without: supports)，默认的@at-root 其实就是 @at-root (without: rule)
+@at-root 默认只会跳出选择器嵌套，而不能跳出 @media 和 @supports，如果要跳出这两种，则需要借助 @at-root(without: media) 和 @at-root(without: supports)，默认的 @at-root 其实就是 @at-root (without: rule)
 
-@at-root(with)和@at-root(without)的语法规则：
+@at-root(with) 和 @at-root(without) 的语法规则：
 
 with 表示的是不跳出某个范围，还包含在这个范围内
 
